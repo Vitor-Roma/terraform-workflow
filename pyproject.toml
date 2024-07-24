@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "dynamodb"
+version = "0.1.0"
+description = ""
+authors = ["Vitor <vitorvxroma@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+boto3 = "^1.34.140"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
