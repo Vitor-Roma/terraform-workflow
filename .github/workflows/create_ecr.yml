@@ -25,7 +25,7 @@ jobs:
 
     - name: Terraform Init
       working-directory: ./terraform
-      run: terraform init -reconfigure
+      run: terraform init
 
     - name: Terraform Plan
       working-directory: ./terraform
