@@ -21,15 +21,17 @@ jobs:
       run: |
         IMAGE_TAG=latest
         IMAGE_NAME=dynamodb-terraform
-        docker build -t $IMAGE_NAME:latest.
+        docker build -t $IMAGE_NAME:$IMAGE_TAG.
 
     - name: Push Docker image to ECR
       run: |
-        REGION=us-west-2
-        IMAGE_NAME=my-repo
+        AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID=SEU_AWS_ACCOUNT_ID
+        REGION=us-east-1
+        IMAGE_NAME=dynamodb-terraform
         IMAGE_TAG=latest
-        docker push $AWS_ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
+        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$REGION.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
 
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
