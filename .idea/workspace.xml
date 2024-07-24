@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e284a3ec-af0f-4473-8020-cd913004d68d" name="Changes" comment="revert commit" />
+    <list default="true" id="e284a3ec-af0f-4473-8020-cd913004d68d" name="Changes" comment="revert commit">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/buid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/buid.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/create_ecr.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/create_ecr.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
