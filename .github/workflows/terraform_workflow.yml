@@ -53,8 +53,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-          ecr_name: ${{ secrets.REPO_NAME }}
-          service_name: "amm-service"
 
       - name: Terraform Init
         working-directory: ./terraform
@@ -63,4 +61,4 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         working-directory: ./terraform
-        run: terraform apply -auto-approve
+        run: terraform apply -var="ecr_name"="${{ secrets.REPO_NAME }}" -var="service_name"="amm-service"
