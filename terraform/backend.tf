@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "bucket-irating"
+    bucket         = "auto-mate-match-terraform"
     key            = "terraform/terraform.tfstate"
     region         = "us-east-1"
   }
