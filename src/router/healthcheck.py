@@ -6,10 +6,8 @@ from starlette import status
 def setup():
     router = APIRouter()
 
-    @router.get("/healthcheck")
+    @router.get("/healthcheck", status_code=200)
     def healthcheck():
-        return Response(
-            status_code=status.HTTP_200_OK,
-            content="Healthy")
+        return "Healthy"
 
     return router
