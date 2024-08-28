@@ -16,3 +16,4 @@ FROM base AS development
 RUN poetry install
 
 CMD [ "src.main.handler" ]
+
