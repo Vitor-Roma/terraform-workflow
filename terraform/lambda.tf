@@ -3,6 +3,12 @@ resource "aws_lambda_function" "amm_service" {
   image_uri     = var.ecr_image_uri
   package_type  = "Image"
   role          = aws_iam_role.lambda_exec_role.arn
+
+  environment {
+    variables = {
+      DEPLOYMENT_VERSION = "${timestamp()}"
+    }
+  }
 }
 
 
