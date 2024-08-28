@@ -35,4 +35,4 @@ handler = Mangum(app, lifespan="off")
 
 if __name__ == "__main__":
     uvicorn_app = f"{os.path.basename(__file__).removesuffix('.py')}:app"
-    uvicorn.run(uvicorn_app, host="0.0.0.0", port=8002, reload=True)
+    uvicorn.run(uvicorn_app, host="0.0.0.0", port=8000, reload=True)
