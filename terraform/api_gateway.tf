@@ -1,18 +1,18 @@
 resource "aws_api_gateway_rest_api" "amm_api_gateway" {
-  name        = "MyAPIGateway"
+  name        = "Auto_Mate_Match_Api_Gateway"
   description = "API Gateway for my Lambda function"
 }
 
 resource "aws_api_gateway_resource" "amm_api_resource" {
   rest_api_id = aws_api_gateway_rest_api.amm_api_gateway.id
   parent_id   = aws_api_gateway_rest_api.amm_api_gateway.root_resource_id
-  path_part   = "myresource"
+  path_part   = "{proxy+}"
 }
 
 resource "aws_api_gateway_method" "amm_api_method" {
   rest_api_id   = aws_api_gateway_rest_api.amm_api_gateway.id
   resource_id   = aws_api_gateway_resource.amm_api_resource.id
-  http_method   = "GET"
+  http_method   = "ANY"
   authorization = "NONE"
 }
 
