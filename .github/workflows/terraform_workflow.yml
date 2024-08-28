@@ -61,8 +61,4 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         working-directory: ./terraform
-        env:
-          ecr_name: ${{ secrets.REPO_NAME }}
-          service_name: amm-service
-          lambda_function_name: amm-lambda
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="ecr_name"="${{ secrets.REPO_NAME }}" -var="service_name"="amm-service" -var="lambda_function_name"="amm-lambda"
