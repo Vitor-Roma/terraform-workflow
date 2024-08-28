@@ -1,14 +1,19 @@
-FROM python:3.12.1
+#############################
 
+FROM public.ecr.aws/lambda/python:3.12 AS base
 
-WORKDIR /usr/src/app
-COPY ./ /usr/src/app
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/src
+WORKDIR /src
+RUN pip install poetry==1.7.1
+RUN poetry config virtualenvs.create false
+COPY . .
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+FROM base AS dependencies
+RUN poetry install --only main
 
+FROM base AS development
+RUN poetry install
 
-# install dependencies
-RUN pip install --upgrade pip --user
+CMD [ "src.main.handler" ]
 
-EXPOSE 8000

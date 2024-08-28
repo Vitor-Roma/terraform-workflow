@@ -1,34 +1,42 @@
-data "aws_iam_policy_document" "dynamodb_put_item_policy_document" {
-  statement {
-    actions   = ["dynamodb:PutItem"]
-    resources = [aws_dynamodb_table.audit-log-sdk-dynamodb-table.arn]
-    effect    = "Allow"
-  }
+resource "aws_iam_role" "lambda_exec_role" {
+  name = "lambda_exec_role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Action = "sts:AssumeRole"
+      Effect = "Allow"
+      Principal = {
+        Service = "lambda.amazonaws.com"
+      }
+    }]
+  })
 }
 
-resource "aws_iam_policy" "dynamodb_put_item_policy" {
-  name        = "dynamodb-put-item-policy"
-  description = "IAM policy to allow inserting items into a specific DynamoDB table"
-  policy      = data.aws_iam_policy_document.dynamodb_put_item_policy_document.json
+resource "aws_iam_policy" "api_gateway_invoke_policy" {
+  name   = "api_gateway_invoke_policy"
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Action   = "execute-api:Invoke",
+        Effect   = "Allow",
+        Resource = "*"
+      },
+    ],
+  })
 }
 
-data "aws_iam_policy_document" "assume_role_policy" {
-  statement {
-    actions = ["sts:AssumeRole"]
-    principals {
-      type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
-    }
-    effect = "Allow"
-  }
+resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
+  role       = aws_iam_role.lambda_exec_role.name
+  policy_arn = aws_iam_policy.api_gateway_invoke_policy.arn
 }
 
-resource "aws_iam_role" "dynamodb_put_item_role" {
-  name = "dynamodb_put_item_role"
-  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
-}
+resource "aws_lambda_permission" "api_gateway_permission" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.amm_service.function_name
+  principal     = "apigateway.amazonaws.com"
 
-resource "aws_iam_role_policy_attachment" "attach_policy" {
-  policy_arn = aws_iam_policy.dynamodb_put_item_policy.arn
-  role       = aws_iam_role.dynamodb_put_item_role.name
+  source_arn    = "${aws_api_gateway_rest_api.amm_api_gateway.execution_arn}/*${aws_api_gateway_resource.amm_api_resource.path}"
 }
