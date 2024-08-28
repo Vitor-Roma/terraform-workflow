@@ -8,6 +8,6 @@ def setup():
 
     @router.get("/healthcheck", status_code=200)
     def healthcheck():
-        return "Healthy"
+        return "Healthy_test"
 
     return router
