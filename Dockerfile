@@ -11,5 +11,5 @@ COPY . .
 
 RUN poetry install --only main
 
-CMD [ "src.main.handler" ]
+CMD [ "main.handler" ]
 
