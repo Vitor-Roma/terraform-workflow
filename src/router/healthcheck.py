@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-import logging
+from src.logger import logging
 
 
 def setup():
