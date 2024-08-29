@@ -4,11 +4,6 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "lambda_function_name" {
-  description = "Name of the Lambda function"
-  type        = string
-}
-
 variable "service_name" {
   description = "Name of the service"
   type        = string

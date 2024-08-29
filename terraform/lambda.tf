@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "amm_service" {
-  function_name = var.lambda_function_name
+  function_name = var.service_name
   image_uri     = "${data.aws_ecr_repository.amm-ecr-repo.repository_url}:latest"
   package_type  = "Image"
   role          = aws_iam_role.lambda_exec_role.arn

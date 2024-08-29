@@ -1,15 +1,18 @@
 from fastapi import APIRouter
-from fastapi.responses import Response
-from starlette import status
+import logging
 
 
 def setup():
     router = APIRouter()
 
-    @router.get("/healthcheck")
+    @router.get("/healthcheck", status_code=200)
     def healthcheck():
-        return Response(
-            status_code=status.HTTP_200_OK,
-            content="Healthy")
+        logging.info("Healthy")
+        return "Healthy"
+
+    @router.get("/test", status_code=400)
+    def healthcheck():
+        logging.error("Error")
+        return "Error"
 
     return router

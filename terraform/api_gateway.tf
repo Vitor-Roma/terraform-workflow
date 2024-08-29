@@ -32,5 +32,5 @@ resource "aws_api_gateway_deployment" "amm_api_deployment" {
 }
 
 output "api_gateway_invoke_url" {
-  value = "${aws_api_gateway_deployment.amm_api_deployment.invoke_url}/myresource"
+  value = "${aws_api_gateway_deployment.amm_api_deployment.invoke_url}/${var.service_name}"
 }
