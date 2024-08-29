@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e284a3ec-af0f-4473-8020-cd913004d68d" name="Changes" comment="terraform change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/healthcheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/healthcheck.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terraform/cloudwatch.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/cloudwatch.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terraform/iam.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/iam.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terraform/lambda.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/lambda.tf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +53,7 @@
     "Python.Main.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/vitor/Projects/terraform-workflow/src"
+    "last_opened_file_path": "/home/vitor/Projects/appl-dsar"
   }
 }]]></component>
   <component name="RecentsManager">
